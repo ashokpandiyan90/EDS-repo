@@ -113,6 +113,9 @@ export default async function decorate(block) {
   if (brandLink) {
     brandLink.className = '';
     brandLink.closest('.button-container').className = '';
+    if (!brandLink.textContent.trim() && !brandLink.getAttribute('aria-label')) {
+      brandLink.setAttribute('aria-label', 'Home');
+    }
   }
 
   const navSections = nav.querySelector('.nav-sections');

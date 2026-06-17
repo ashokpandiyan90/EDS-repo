@@ -421,6 +421,14 @@ function wrapTextNodes(block) {
 function decorateButtons(element) {
   element.querySelectorAll('a').forEach((a) => {
     a.title = a.title || a.textContent;
+    if (a.href === a.textContent && !a.getAttribute('aria-label')) {
+      try {
+        const url = new URL(a.href);
+        a.setAttribute('aria-label', url.hostname);
+      } catch (e) {
+        // not a valid URL, leave as-is
+      }
+    }
     if (a.href !== a.textContent) {
       const up = a.parentElement;
       const twoup = a.parentElement.parentElement;
