@@ -19,6 +19,14 @@
   --dark-color: #ccc;
   --text-color: black;
 
+  /* section background palette */
+  --color-aubergine: #3d0030;
+  --color-aubergine-text: #ffffff;
+  --color-charcoal: #2b2b2b;
+  --color-charcoal-text: #ffffff;
+  --color-teal: #007b8a;
+  --color-teal-text: #ffffff;
+
   /* fonts */
   --body-font-family: roboto, roboto-fallback;
   --heading-font-family: var(--body-font-family);
@@ -223,4 +231,31 @@ main .section {
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);
+}
+
+main .section.aubergine {
+  background-color: var(--color-aubergine);
+  color: var(--color-aubergine-text);
+}
+
+main .section.aubergine a:any-link {
+  color: var(--color-aubergine-text);
+}
+
+main .section.charcoal {
+  background-color: var(--color-charcoal);
+  color: var(--color-charcoal-text);
+}
+
+main .section.charcoal a:any-link {
+  color: var(--color-charcoal-text);
+}
+
+main .section.teal {
+  background-color: var(--color-teal);
+  color: var(--color-teal-text);
+}
+
+main .section.teal a:any-link {
+  color: var(--color-teal-text);
 }
