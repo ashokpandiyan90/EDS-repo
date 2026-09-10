@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Design Dialog for Table Component.
+  Exposes:
+    - RTE table plugin configuration (which table features are available to authors)
+    - Style groups: "Without Icon" and "With Icon" table variants
+    - Allowed table styles, row styles, cell styles
+-->
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Table Design"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <!-- ============================================================
+                         TAB 1: RTE Plugin Configuration
+                    ============================================================ -->
+                    <rteConfig
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="RTE Table Plugin"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <heading1
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/text"
+                                text="&lt;strong&gt;Enabled Table Features&lt;/strong&gt;"/>
+
+                            <enabledFeatures
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/checkboxlist"
+                                fieldLabel="Table Plugin Features"
+                                name="./rteTableFeatures"
+                                multiple="{Boolean}true"
+                                orientation="vertical">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <insertTable
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Insert Table"
+                                        value="table#insertTable"
+                                        checked="{Boolean}true"/>
+                                    <insertRowBefore
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Insert Row Before"
+                                        value="table#insertRowBefore"
+                                        checked="{Boolean}true"/>
+                                    <insertRowAfter
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Insert Row After"
+                                        value="table#insertRowAfter"
+                                        checked="{Boolean}true"/>
+                                    <removeRow
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Remove Row"
+                                        value="table#removeRow"
+                                        checked="{Boolean}true"/>
+                                    <insertColumnBefore
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Insert Column Before"
+                                        value="table#insertColumnBefore"
+                                        checked="{Boolean}true"/>
+                                    <insertColumnAfter
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Insert Column After"
+                                        value="table#insertColumnAfter"
+                                        checked="{Boolean}true"/>
+                                    <removeColumn
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Remove Column"
+                                        value="table#removeColumn"
+                                        checked="{Boolean}true"/>
+                                    <selectRow
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Select Row"
+                                        value="table#selectRow"
+                                        checked="{Boolean}true"/>
+                                    <selectColumn
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Select Column"
+                                        value="table#selectColumn"
+                                        checked="{Boolean}true"/>
+                                    <mergeTableCells
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Merge Cells"
+                                        value="table#mergeTableCells"
+                                        checked="{Boolean}true"/>
+                                    <splitCell
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Split Cell"
+                                        value="table#splitCell"
+                                        checked="{Boolean}true"/>
+                                    <tableProps
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Table Properties"
+                                        value="table#tableProps"
+                                        checked="{Boolean}true"/>
+                                    <tableRowProps
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Row Properties"
+                                        value="table#tableRowProps"
+                                        checked="{Boolean}true"/>
+                                    <tableCellProps
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Cell Properties"
+                                        value="table#tableCellProps"
+                                        checked="{Boolean}true"/>
+                                </items>
+                            </enabledFeatures>
+
+                            <separator1
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/layout/columnbreak"/>
+
+                            <heading2
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/text"
+                                text="&lt;strong&gt;Table CSS Classes (RTE table styles)&lt;/strong&gt;"/>
+
+                            <tableStylesConfig
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/multifield"
+                                fieldLabel="Table CSS Styles"
+                                name="./tableStylesConfig"
+                                composite="{Boolean}true">
+                                <field
+                                    jcr:primaryType="nt:unstructured"
+                                    sling:resourceType="granite/ui/components/coral/foundation/container">
+                                    <items jcr:primaryType="nt:unstructured">
+                                        <cssName
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="CSS Class"
+                                            name="cssName"/>
+                                        <text
+                                            jcr:primaryType="nt:unstructured"
+                                            sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                            fieldLabel="Display Name"
+                                            name="text"/>
+                                    </items>
+                                </field>
+                            </tableStylesConfig>
+
+                        </items>
+                    </rteConfig>
+
+                    <!-- ============================================================
+                         TAB 2: Style Groups (Without Icon / With Icon)
+                    ============================================================ -->
+                    <stylesTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Styles"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <styleHeading
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/text"
+                                text="Configure available style groups for the Table component. Each group appears in the Style tab of the component toolbar."/>
+
+                            <!-- Style Group: Without Icon -->
+                            <withoutIconGroup
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+
+                                <items jcr:primaryType="nt:unstructured">
+
+                                    <withoutIconHeading
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/text"
+                                        text="&lt;strong&gt;Without Icon Styles&lt;/strong&gt; — applied when variation = standard"/>
+
+                                    <withoutIconStyles
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/style/group"
+                                        jcr:title="Without Icon"
+                                        name="./withoutIconStyles">
+
+                                        <items jcr:primaryType="nt:unstructured">
+
+                                            <default
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Default"
+                                                cq:styleId="table-standard"
+                                                value="table--standard"/>
+
+                                            <striped
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Striped"
+                                                cq:styleId="table-striped"
+                                                value="table--striped"/>
+
+                                            <bordered
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Bordered"
+                                                cq:styleId="table-bordered"
+                                                value="table--bordered"/>
+
+                                            <compact
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Compact"
+                                                cq:styleId="table-compact"
+                                                value="table--compact"/>
+
+                                            <hoverHighlight
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Hover Highlight"
+                                                cq:styleId="table-hover"
+                                                value="table--hover"/>
+
+                                        </items>
+                                    </withoutIconStyles>
+
+                                </items>
+                            </withoutIconGroup>
+
+                            <divider
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/layout/columnbreak"/>
+
+                            <!-- Style Group: With Icon -->
+                            <withIconGroup
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/container"
+                                margin="{Boolean}true">
+
+                                <items jcr:primaryType="nt:unstructured">
+
+                                    <withIconHeading
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="granite/ui/components/coral/foundation/text"
+                                        text="&lt;strong&gt;With Icon Styles&lt;/strong&gt; — applied when variation = icon"/>
+
+                                    <withIconStyles
+                                        jcr:primaryType="nt:unstructured"
+                                        sling:resourceType="cq/gui/components/authoring/dialog/style/group"
+                                        jcr:title="With Icon"
+                                        name="./withIconStyles">
+
+                                        <items jcr:primaryType="nt:unstructured">
+
+                                            <iconDefault
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Icon Default"
+                                                cq:styleId="table-icon-standard"
+                                                value="table--icon table--icon-standard"/>
+
+                                            <iconLarge
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Icon Large"
+                                                cq:styleId="table-icon-large"
+                                                value="table--icon table--icon-large"/>
+
+                                            <iconSmall
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Icon Small"
+                                                cq:styleId="table-icon-small"
+                                                value="table--icon table--icon-small"/>
+
+                                            <iconColorAccent
+                                                jcr:primaryType="nt:unstructured"
+                                                jcr:title="Icon Accent Color"
+                                                cq:styleId="table-icon-accent"
+                                                value="table--icon table--icon-accent"/>
+
+                                        </items>
+                                    </withIconStyles>
+
+                                </items>
+                            </withIconGroup>
+
+                        </items>
+                    </stylesTab>
+
+                    <!-- ============================================================
+                         TAB 3: Allowed Components / Policies (optional override)
+                    ============================================================ -->
+                    <policyTab
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Policy"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <defaultVariation
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Default Variation"
+                                name="./defaultVariation">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <standard
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Standard (without icon)"
+                                        value="standard"
+                                        selected="{Boolean}true"/>
+                                    <icon
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Icon table (with icon column)"
+                                        value="icon"/>
+                                </items>
+                            </defaultVariation>
+
+                            <allowedHeadingLevels
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Table Header Row Style"
+                                name="./headerRowStyle"
+                                multiple="{Boolean}false">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <thead
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Use &lt;thead&gt; element"
+                                        value="thead"
+                                        selected="{Boolean}true"/>
+                                    <firstRow
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Style first row as header"
+                                        value="first-row"/>
+                                    <none
+                                        jcr:primaryType="nt:unstructured"
+                                        text="None"
+                                        value="none"/>
+                                </items>
+                            </allowedHeadingLevels>
+
+                        </items>
+                    </policyTab>
+
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>

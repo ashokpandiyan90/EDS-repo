@@ -1,0 +1,33 @@
+<!--/*
+  Table Component - HTL Template
+  Supports two variations:
+    - Standard table (no icon column)
+    - Icon table (first column is an icon cell)
+*/-->
+<sly data-sly-use.model="com.mysite.core.models.TableModel"
+     data-sly-use.template="core/wcm/components/commons/v1/templates.html"/>
+
+<sly data-sly-call="${template.placeholder @ isEmpty=model.empty}"/>
+
+<div data-sly-test="${!model.empty}"
+     class="table-component ${model.cssClasses @ context='attribute'}"
+     data-component-type="table"
+     data-variation="${model.variation @ context='attribute'}">
+
+    <!--/* Standard Table variation */-->
+    <sly data-sly-test="${model.variation == 'standard' || model.variation == ''}">
+        <div class="table-wrapper">
+            <div class="rte-table-content"
+                 data-sly-text="${model.tableContent @ context='html'}"/>
+        </div>
+    </sly>
+
+    <!--/* Icon Table variation */-->
+    <sly data-sly-test="${model.variation == 'icon'}">
+        <div class="table-wrapper table-wrapper--icon">
+            <div class="rte-table-content rte-table-content--icon"
+                 data-sly-text="${model.tableContent @ context='html'}"/>
+        </div>
+    </sly>
+
+</div>

@@ -1,0 +1,180 @@
+/**
+ * Table Component Styles
+ *
+ * Covers:
+ *  - Base table styles shared by all variations
+ *  - Standard table modifiers (striped, bordered, compact, hover)
+ *  - Icon table variation (first column is an icon cell)
+ */
+
+/* ============================================================
+   1. Base / Shared
+   ============================================================ */
+.table-component {
+    width: 100%;
+    overflow-x: auto; /* horizontal scroll on small viewports */
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* RTE-generated table resets */
+.rte-table-content table,
+.rte-table-content--icon table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    font-size: 0.9375rem;   /* 15px */
+    line-height: 1.5;
+    color: #2d2d2d;
+    background-color: #fff;
+    margin-bottom: 1.5rem;
+}
+
+.rte-table-content th,
+.rte-table-content td,
+.rte-table-content--icon th,
+.rte-table-content--icon td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    vertical-align: top;
+    border: 1px solid #d4d4d4;
+}
+
+.rte-table-content thead th,
+.rte-table-content--icon thead th {
+    background-color: #f4f4f4;
+    font-weight: 700;
+    color: #1a1a1a;
+    border-bottom: 2px solid #b0b0b0;
+}
+
+/* Caption */
+.rte-table-content caption,
+.rte-table-content--icon caption {
+    caption-side: top;
+    text-align: left;
+    font-size: 0.85rem;
+    color: #6b6b6b;
+    margin-bottom: 0.5rem;
+}
+
+/* ============================================================
+   2. Without-Icon Modifiers
+   ============================================================ */
+
+/* Striped */
+.table-component.table--striped .rte-table-content tbody tr:nth-child(odd) td {
+    background-color: #f9f9f9;
+}
+
+/* Bordered — already has borders from base; this adds outer emphasis */
+.table-component.table--bordered .rte-table-content table {
+    border: 2px solid #b0b0b0;
+}
+
+/* Compact */
+.table-component.table--compact .rte-table-content th,
+.table-component.table--compact .rte-table-content td {
+    padding: 0.375rem 0.625rem;
+    font-size: 0.875rem;
+}
+
+/* Hover highlight */
+.table-component.table--hover .rte-table-content tbody tr:hover td {
+    background-color: #eef4fb;
+    transition: background-color 0.15s ease;
+}
+
+/* ============================================================
+   3. With-Icon Variation  (variation="icon")
+   ============================================================ */
+
+.table-wrapper--icon .rte-table-content--icon table td:first-child,
+.table-wrapper--icon .rte-table-content--icon table th:first-child {
+    width: 3.5rem;
+    min-width: 3.5rem;
+    text-align: center;
+    vertical-align: middle;
+    padding: 0.5rem;
+    background-color: #f4f4f4;
+    border-right: 2px solid #d4d4d4;
+}
+
+/* Icon images / SVGs inside the first cell */
+.table-wrapper--icon .rte-table-content--icon td:first-child img,
+.table-wrapper--icon .rte-table-content--icon td:first-child svg {
+    display: block;
+    margin: 0 auto;
+    max-width: 2rem;
+    max-height: 2rem;
+    object-fit: contain;
+}
+
+/* Icon size variants */
+.table-component.table--icon-small .rte-table-content--icon table td:first-child,
+.table-component.table--icon-small .rte-table-content--icon table th:first-child {
+    width: 2.5rem;
+    min-width: 2.5rem;
+}
+
+.table-component.table--icon-small .rte-table-content--icon td:first-child img,
+.table-component.table--icon-small .rte-table-content--icon td:first-child svg {
+    max-width: 1.25rem;
+    max-height: 1.25rem;
+}
+
+.table-component.table--icon-large .rte-table-content--icon table td:first-child,
+.table-component.table--icon-large .rte-table-content--icon table th:first-child {
+    width: 5rem;
+    min-width: 5rem;
+}
+
+.table-component.table--icon-large .rte-table-content--icon td:first-child img,
+.table-component.table--icon-large .rte-table-content--icon td:first-child svg {
+    max-width: 3rem;
+    max-height: 3rem;
+}
+
+/* Accent color for icon column */
+.table-component.table--icon-accent .rte-table-content--icon table td:first-child,
+.table-component.table--icon-accent .rte-table-content--icon table th:first-child {
+    background-color: #e8f0fe;
+    border-right-color: #4285f4;
+}
+
+/* ============================================================
+   4. Responsive
+   ============================================================ */
+@media (max-width: 768px) {
+    .rte-table-content th,
+    .rte-table-content td,
+    .rte-table-content--icon th,
+    .rte-table-content--icon td {
+        padding: 0.5rem 0.625rem;
+        font-size: 0.875rem;
+    }
+
+    .table-wrapper--icon .rte-table-content--icon table td:first-child,
+    .table-wrapper--icon .rte-table-content--icon table th:first-child {
+        width: 2.75rem;
+        min-width: 2.75rem;
+    }
+}
+
+/* ============================================================
+   5. Edit-mode helpers (author UI only)
+   ============================================================ */
+.cq-wcm-edit .table-component:empty::before {
+    content: "Table — click to edit";
+    display: block;
+    padding: 1.5rem;
+    background: #f0f4ff;
+    border: 2px dashed #4285f4;
+    color: #4285f4;
+    text-align: center;
+    font-size: 0.875rem;
+}

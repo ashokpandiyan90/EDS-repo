@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Author Dialog for Table Component.
+  Provides an RTE field with table plugin enabled, plus a variation selector.
+-->
+<jcr:root xmlns:jcr="http://www.jcp.org/jcr/1.0"
+          xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
+          xmlns:cq="http://www.day.com/jcr/cq/1.0"
+          xmlns:granite="http://www.adobe.com/jcr/granite/1.0"
+          jcr:primaryType="nt:unstructured"
+          jcr:title="Table"
+          sling:resourceType="cq/gui/components/authoring/dialog">
+
+    <content
+        jcr:primaryType="nt:unstructured"
+        sling:resourceType="granite/ui/components/coral/foundation/container">
+
+        <items jcr:primaryType="nt:unstructured">
+
+            <tabs
+                jcr:primaryType="nt:unstructured"
+                sling:resourceType="granite/ui/components/coral/foundation/tabs"
+                maximized="{Boolean}true">
+
+                <items jcr:primaryType="nt:unstructured">
+
+                    <!-- ============================================================
+                         TAB 1: Table Content (RTE)
+                    ============================================================ -->
+                    <content
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Table Content"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <tableContent
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="cq/gui/components/authoring/dialog/richtext"
+                                name="./tableContent"
+                                fieldLabel="Table Content"
+                                useFixedInlineToolbar="{Boolean}true"
+                                customStart="{Boolean}true">
+
+                                <rtePlugins jcr:primaryType="nt:unstructured">
+
+                                    <table
+                                        jcr:primaryType="nt:unstructured"
+                                        features="table,insertTable,insertRowBefore,insertRowAfter,removeRow,insertColumnBefore,insertColumnAfter,removeColumn,selectRow,selectColumn,mergeTableCells,tableProps,tableRowProps,tableCellProps,splitCell">
+                                        <tableStyles
+                                            jcr:primaryType="nt:unstructured"
+                                            cssName="rte__table--default"
+                                            text="Default Table"/>
+                                        <tableRowStyles
+                                            jcr:primaryType="nt:unstructured"
+                                            cssName="rte__tr--highlight"
+                                            text="Highlighted Row"/>
+                                        <tableCellStyles
+                                            jcr:primaryType="nt:unstructured"
+                                            cssName="rte__td--header"
+                                            text="Header Cell"/>
+                                    </table>
+
+                                    <format
+                                        jcr:primaryType="nt:unstructured"
+                                        features="bold,italic,underline"/>
+
+                                    <links
+                                        jcr:primaryType="nt:unstructured"
+                                        features="modifyLink,unlink"/>
+
+                                    <justify
+                                        jcr:primaryType="nt:unstructured"
+                                        features="justifyleft,justifycenter,justifyright,justifyfull"/>
+
+                                    <lists
+                                        jcr:primaryType="nt:unstructured"
+                                        features="ordered,unordered,outdent,indent"/>
+
+                                    <paraformat
+                                        jcr:primaryType="nt:unstructured"
+                                        features="paraformat">
+                                        <formats jcr:primaryType="nt:unstructured">
+                                            <p
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Paragraph"
+                                                tag="p"/>
+                                            <h2
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 2"
+                                                tag="h2"/>
+                                            <h3
+                                                jcr:primaryType="nt:unstructured"
+                                                description="Heading 3"
+                                                tag="h3"/>
+                                        </formats>
+                                    </paraformat>
+
+                                </rtePlugins>
+
+                                <uiSettings jcr:primaryType="nt:unstructured">
+                                    <cui jcr:primaryType="nt:unstructured">
+                                        <inline
+                                            jcr:primaryType="nt:unstructured"
+                                            toolbar="table#insertTable,
+                                                     table#insertRowBefore,table#insertRowAfter,table#removeRow,
+                                                     table#insertColumnBefore,table#insertColumnAfter,table#removeColumn,
+                                                     table#selectRow,table#selectColumn,
+                                                     table#mergeTableCells,table#splitCell,
+                                                     table#tableProps,table#tableRowProps,table#tableCellProps,
+                                                     #separator,
+                                                     format#bold,format#italic,format#underline,
+                                                     links#modifyLink,links#unlink,
+                                                     justify#justifyleft,justify#justifycenter,justify#justifyright,
+                                                     lists#ordered,lists#unordered"/>
+                                        <dialogFullScreen
+                                            jcr:primaryType="nt:unstructured"
+                                            toolbar="table#insertTable,
+                                                     table#insertRowBefore,table#insertRowAfter,table#removeRow,
+                                                     table#insertColumnBefore,table#insertColumnAfter,table#removeColumn,
+                                                     table#selectRow,table#selectColumn,
+                                                     table#mergeTableCells,table#splitCell,
+                                                     table#tableProps,table#tableRowProps,table#tableCellProps,
+                                                     #separator,
+                                                     format#bold,format#italic,format#underline,
+                                                     links#modifyLink,links#unlink,
+                                                     justify#justifyleft,justify#justifycenter,justify#justifyright,
+                                                     lists#ordered,lists#unordered,
+                                                     paraformat#paraformat"/>
+                                    </cui>
+                                </uiSettings>
+
+                            </tableContent>
+
+                        </items>
+                    </content>
+
+                    <!-- ============================================================
+                         TAB 2: Properties / Variation selector
+                    ============================================================ -->
+                    <properties
+                        jcr:primaryType="nt:unstructured"
+                        jcr:title="Properties"
+                        sling:resourceType="granite/ui/components/coral/foundation/container"
+                        margin="{Boolean}true">
+
+                        <items jcr:primaryType="nt:unstructured">
+
+                            <variation
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/select"
+                                fieldLabel="Table Variation"
+                                name="./variation"
+                                required="{Boolean}false">
+                                <items jcr:primaryType="nt:unstructured">
+                                    <standard
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Standard Table (without icon)"
+                                        value="standard"
+                                        selected="{Boolean}true"/>
+                                    <icon
+                                        jcr:primaryType="nt:unstructured"
+                                        text="Icon Table (with icon column)"
+                                        value="icon"/>
+                                </items>
+                            </variation>
+
+                            <id
+                                jcr:primaryType="nt:unstructured"
+                                sling:resourceType="granite/ui/components/coral/foundation/form/textfield"
+                                fieldDescription="Leave blank to auto-generate a unique ID."
+                                fieldLabel="ID"
+                                name="./id"/>
+
+                        </items>
+                    </properties>
+
+                </items>
+            </tabs>
+        </items>
+    </content>
+</jcr:root>
